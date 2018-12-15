@@ -5,8 +5,6 @@ jobs:
       - image: circleci/ruby:2.2.6
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -23,7 +21,11 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-      - run: ruby twitter_delete.rb --user SeanTAllen --days 10 --rts 10 --favs 15 --force
+      - run:
+        name: delete tweets
+        command: |
+          ruby twitter_delete.rb --user SeanTAllen --days 10 --rts 10 --favs 15 --force
+
 workflows:
   version: 2
   commit:
