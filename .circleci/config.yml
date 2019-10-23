@@ -25,6 +25,7 @@ jobs:
           name: delete tweets
           command: |
             ruby twitter_delete.rb --user SeanTAllen --days 1 --rts 5 --favs 10 --force
+            ruby twitter_delete.rb --user SeanTAllen --days 10 --rts 10 --favs 15 --force
 
 workflows:
   version: 2
