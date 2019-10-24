@@ -22,9 +22,13 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       - run:
-          name: delete tweets
+          name: delete recent tweets
           command: |
             ruby twitter_delete.rb --user SeanTAllen --days 1 --rts 5 --favs 10 --force
+
+      - run:
+          name: delete older tweets
+          command: |
             ruby twitter_delete.rb --user SeanTAllen --days 10 --rts 10 --favs 15 --force
 
 workflows:
