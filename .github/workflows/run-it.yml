@@ -1,0 +1,19 @@
+name: Kill some tweets!
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  kill-some-tweets:
+    name: Tweet Killer, qu'est-ce que c'est
+    runs-on: ubuntu-latest
+    container:
+      image: circleci/ruby:2.2.6
+    steps:
+      - name: Install dependencies
+        run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - name: Delete recent tweets
+        run: ruby twitter_delete.rb --user SeanTAllen --days 1 --rts 5 --favs 10 --force
+      - name: Delete older tweets
+        run: ruby twitter_delete.rb --user SeanTAllen --days 10 --rts 10 --favs 15 --force
