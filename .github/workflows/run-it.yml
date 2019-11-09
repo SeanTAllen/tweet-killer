@@ -9,7 +9,7 @@ jobs:
     name: Tweet Killer, qu'est-ce que c'est
     runs-on: ubuntu-latest
     container:
-      image: circleci/ruby:2.2.6
+      image: ruby:2.6.5-stretch
     steps:
       - name: Install dependencies
         run: bundle install --jobs=4 --retry=3 --path vendor/bundle
