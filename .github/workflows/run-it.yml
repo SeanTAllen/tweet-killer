@@ -11,6 +11,7 @@ jobs:
     container:
       image: ruby:2.6.5-stretch
     steps:
+      - uses: actions/checkout@v1
       - name: Install dependencies
         run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - name: Delete recent tweets
